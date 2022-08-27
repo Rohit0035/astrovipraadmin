@@ -12,6 +12,8 @@ import {
 import { history } from "../../../history";
 import "../../../assets/scss/pages/app-ecommerce-shop.scss";
 import "../../../assets/scss/pages/users.scss";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
+
 // import axiosConfig from "../../../axiosConfig";
 import axios from "axios";
 class ViewUserRide extends React.Component {
@@ -21,15 +23,15 @@ class ViewUserRide extends React.Component {
       data: {},
     };
   }
- 
+
 
   componentDidMount() {
     let { id } = this.props.match.params;
     axios
       .get(`http://35.154.86.59/api/user/view_onecust/${id}`)
-      
+
       .then(response => {
-        
+
          //console.log(response.data);
         console.log(response.data.data);
         this.setState({ data: response.data.data });
@@ -38,11 +40,16 @@ class ViewUserRide extends React.Component {
         console.log(error.response);
       });
   }
- 
+
   render() {
     return (
       <React.Fragment>
         <div>
+        <Breadcrumbs
+            breadCrumbTitle="Customer"
+            breadCrumbParent="Home"
+            breadCrumbActive="View Customer "
+          />
           <Row>
             <Col sm="12">
               <div>
@@ -76,10 +83,10 @@ class ViewUserRide extends React.Component {
             <CardBody className="pb-0">
               <Row className="ml-4">
                 <Col sm="9" md="12" lg="12">
-                <div className="users-page-view-table"> 
+                <div className="users-page-view-table">
                 {/* <div className="d-flex user-info">
                     <div className="user-info-title font-weight-bold">
-                    Customer Id 
+                    Customer Id
                     </div>
                     <div className="text-truncate">
                       <span>{this.state.data.customerId}</span>

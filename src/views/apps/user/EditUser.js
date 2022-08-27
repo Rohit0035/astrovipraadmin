@@ -16,6 +16,7 @@ import axiosConfig from "../../../axiosConfig";
 //import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { Route } from "react-router-dom";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
 import { data } from "jquery";
 export class EditCustomer extends Component {
@@ -109,6 +110,11 @@ export class EditCustomer extends Component {
   render() {
     return (
       <div>
+        <Breadcrumbs
+            breadCrumbTitle="Customer"
+            breadCrumbParent="Home"
+            breadCrumbActive="Edit Customer "
+          />
         <Card>
           <Row className="m-2">
             <Col>
@@ -129,91 +135,133 @@ export class EditCustomer extends Component {
               </Col>
           </Row>
           <CardBody>
-            <Form className="m-1" onSubmit={this.submitHandler}>
-              <Row className="mb-2">
-                <Col lg="6" md="6">
-                  <FormGroup>
-                    <Label> First Name</Label>
-                    <Input
-                      type="text"
-                      placeholder="First Name"
-                      name="first_name"
-                      value={this.state.first_name}
-                      onChange={this.changeHandler}
-                    />
-                  </FormGroup>
+          <Form className="m-1" onSubmit={this.submitHandler}>
+              <Row>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>first Name</Label>
+                  <Input
+                    required
+                    type="text"
+                    name="first_name"
+                    placeholder="Enter First Name"
+                    value={this.state.first_name}
+                    onChange={this.changeHandler}>
+                  </Input>
                 </Col>
-                <Col lg="6" md="6">
-                  <FormGroup>
-                    <Label> Last Name</Label>
-                    <Input
-                  
-                      type="text"
-                      placeholder="Last Name"
-                      name="last_name"
-                      value={this.state.last_name}
-                      onChange={this.changeHandler}
-                    />
-                  </FormGroup>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Last Name</Label>
+                  <Input
+                    required
+                    type="text"
+                    name="last_name"
+                    placeholder="Enter Last Name"
+                    value={this.state.last_name}
+                    onChange={this.changeHandler}>
+                  </Input>
                 </Col>
-                <Col lg="6" md="6">
-                  <FormGroup>
-                    <Label>Sort Order</Label>
-                    <Input
-                      type="number"
-                      placeholder="Sort Order"
-                      name="sortorder"
-                      value={this.state.sortorder}
-                      onChange={this.changeHandler}
-                    />
-                  </FormGroup>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label> Email</Label>
+                  <Input
+                    required
+                    type="email"
+                    name="customer_email"
+                    placeholder="Email"
+                    value={this.state.customer_email}
+                    onChange={this.changeHandler} >
+                  </Input>
                 </Col>
-            {/* <Col lg="6" md="6">
-                  <FormGroup>
-                  <Label>Store Address</Label>
-                    <Input
-                      type="text"
-                      placeholder="Sort Address"
-                      name="store_address"
-                      value={this.state.store_address}
-                      onChange={this.changeHandler}
-                    /> 
-                  </FormGroup>
-                </Col> */}
-                <Col lg="6" md="6" sm="6" className="mb-2 mt-1">
-                  <FormGroup>
-                    <Label className="mb-1">Status</Label>
-                    <div
-                      className="form-label-group"
-                      onChange={(e) => this.changeHandler1(e)}
-                    >
-                      <input
-                        style={{ marginRight: "3px" }}
-                        type="radio"
-                        name="status"
-                        value="Active"
-                      />
-                      <span style={{ marginRight: "20px" }}>Active</span>
 
-                      <input
-                        style={{ marginRight: "3px" }}
-                        type="radio"
-                        name="status"
-                        value="Inactive"
-                      />
-                      <span style={{ marginRight: "3px" }}>Inactive</span>
-                    </div>
-                  </FormGroup>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Mobile No.</Label>
+                  <Input
+                    required
+                    type="number"
+                    name="mobile_no"
+                    placeholder="Mobile No."
+                    value={this.state.mobile_no}
+                    onChange={this.changeHandler}>
+                  </Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>DOB</Label>
+                    <Input
+                      required
+                      type="date"
+                      name="sortorder"
+                      placeholder="Enter Confirm  Password"
+                      value={this.state.sortorder}
+                      onChange={this.changeHandler}>
+                    </Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Date Of Register</Label>
+                    <Input
+                      required
+                      type="date"
+                      name="sortorder"
+                      placeholder="Enter Confirm  Password"
+                      value={this.state.sortorder}
+                      onChange={this.changeHandler}>
+                    </Input>
                 </Col>
               </Row>
               <Row>
-                <Button.Ripple
-                  color="danger"
-                  type="submit"
-                  className="mr-1 mb-1"
-                >
-                  Update Customer
-                </Button.Ripple>
+              <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Password </Label>
+                    <Input
+                      required
+                      type="text"
+                      name="sortorder"
+                      placeholder="Enter Password"
+                      value={this.state.sortorder}
+                      onChange={this.changeHandler}>
+                    </Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Confirm Password </Label>
+                    <Input
+                      required
+                      type="text"
+                      name="sortorder"
+                      placeholder="Enter Confirm  Password"
+                      value={this.state.sortorder}
+                      onChange={this.changeHandler}>
+                    </Input>
+                </Col>
+
+            </Row>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Inactive"
+                    />
+                    <span style={{ marginRight: "3px" }}>Inactive</span>
+                  </div>
+                </Col>
+              <Row>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Button.Ripple
+                    color="primary"
+                    type="submit"
+                    className="mr-1 mb-1">
+                    Add User
+                  </Button.Ripple>
+                </Col>
               </Row>
             </Form>
           </CardBody>

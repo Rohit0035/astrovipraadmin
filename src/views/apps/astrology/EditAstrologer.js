@@ -16,6 +16,7 @@ import axiosConfig from "../../../axiosConfig";
 // import { data } from "jquery";
 // import swal from "sweetalert";
 import { Route } from "react-router-dom";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
 export default class EditAstrologer extends Component {
   constructor(props) {
@@ -63,6 +64,11 @@ export default class EditAstrologer extends Component {
   render() {
     return (
       <div>
+        <Breadcrumbs
+          breadCrumbTitle="Astrologer"
+          breadCrumbParent="Home"
+          breadCrumbActive=" Edit Astrologer "
+        />
         <Row>
           <Col sm="12">
             <div>

@@ -20,6 +20,7 @@ import { Eye, Edit, Trash2, ChevronDown } from "react-feather";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
 class AstrologerList extends React.Component {
   state = {
@@ -47,14 +48,14 @@ class AstrologerList extends React.Component {
 
       {
         headerName: "Name",
-        field: "firstname",
+        field: "fullname",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
               <span>
-                {params.data.firstname} {params.data.lastname}
+                {params.data.fullname}
               </span>
             </div>
           );
@@ -88,47 +89,113 @@ class AstrologerList extends React.Component {
         },
       },
       {
-        headerName: "Language",
-        field: "mobile",
+        headerName: "Gender",
+        field: "gender",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
-              <span>{params.data.mobile}</span>
+              <span>{params.data.gender}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Age ",
-        field: "mobile",
+        headerName: "DOB",
+        field: "dob",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
-              <span>{params.data.mobile}</span>
+              <span>{params.data.dob}</span>
             </div>
           );
         },
       },
       {
-        headerName: "Expart",
-        field: "mobile",
+        headerName: "Primary Skills",
+        field: "primary_skills",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
-              <span>{params.data.mobile}</span>
+              <span>{params.data.primary_skills}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "All Skills",
+        field: "all_skills",
+        filter: true,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span>{params.data.all_skills}</span>
             </div>
           );
         },
       },
 
       {
-        headerName: "Actions",
+        headerName: "Exprience",
+        field: "exp_in_years",
+        filter: true,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span>{params.data.exp_in_years}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Language",
+        field: "language",
+        filter: true,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span>{params.data.language}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Call charge ",
+        field: "callCharge",
+        filter: true,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span>{params.data.callCharge}</span>
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Status",
+        field: "status",
+        filter: true,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div>
+              <span className="s-on">{params.data.status}</span>
+            </div>
+          );
+        },
+      },
+
+      {
+        headerName: "Action",
         field: "sortorder",
         width: 200,
         cellRendererFramework: (params) => {
@@ -175,18 +242,18 @@ class AstrologerList extends React.Component {
     ],
   };
   async componentDidMount() {
-    let { id } = this.props.match.params;
+    // let { id } = this.props.match.params;
+
+    // await axios
+    //   .get(`http://3.108.185.7:4000/user/view_onecust/${id}`)
+    //   .then((response) => {
+    //     let rowData = response.data.data;
+    //     console.log(rowData);
+    //     this.setState({ rowData });
+    //   });
 
     await axios
-      .get(`http://3.108.185.7:4000/user/view_onecust/${id}`)
-      .then((response) => {
-        let rowData = response.data.data;
-        console.log(rowData);
-        this.setState({ rowData });
-      });
-
-    await axios
-      .get("http://3.108.185.7:4000/admin/allcustomer")
+      .get("http://15.207.86.15:8000/admin/allAstro")
       .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);
@@ -196,7 +263,7 @@ class AstrologerList extends React.Component {
 
   async runthisfunction(id) {
     console.log(id);
-    await axios.get(`http://3.108.185.7:4000/admin/delcustomer/${id}`).then(
+    await axios.get(`http:// 15.207.86.15:8000/user/dltAstro/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -227,11 +294,22 @@ class AstrologerList extends React.Component {
     }
   };
   render() {
+
+
     const { rowData, columnDefs, defaultColDef } = this.state;
     return (
       console.log(rowData),
       (
+
+        <div>
+        <Breadcrumbs
+          breadCrumbTitle="Astrologer"
+          breadCrumbParent="Home"
+          breadCrumbActive=" Astrologer "
+        />
+
         <Row className="app-user-list">
+
           <Col sm="12"></Col>
           <Col sm="12">
             <Card>
@@ -245,7 +323,7 @@ class AstrologerList extends React.Component {
                   <Route
                     render={({ history }) => (
                       <Button
-                        className=" btn btn-danger float-right"
+                        className=" btn btn-success float-right"
                         onClick={() =>
                           history.push("/app/astrology/addAstrologer")
                         }
@@ -351,6 +429,7 @@ class AstrologerList extends React.Component {
             </Card>
           </Col>
         </Row>
+        </div>
       )
     );
   }

@@ -70,7 +70,7 @@ const navigationConfig = [
         type: "item",
         icon: <Icon.PhoneIncoming size={12} />,
         permissions: ["admin", "editor"],
-        navLink: "/app/status/statusList",
+        navLink: "/app/callmanagement/callhistory",
       },
       {
         id: "callreject",
@@ -78,7 +78,7 @@ const navigationConfig = [
         type: "item",
         icon: <Icon.PhoneMissed size={12} />,
         permissions: ["admin", "editor"],
-        navLink: "/app/status/daily",
+        navLink: "/app/callmanagement/callgreject",
       },
 
     ],
@@ -91,12 +91,20 @@ const navigationConfig = [
     icon: <Icon.Package size={20} />,
     children: [
       {
+        id: "allpackage",
+        title: "All Package",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/packagemanager/allPackage",
+      },
+      {
         id: "userrecharge",
         title: "User Recharge",
         type: "item",
         icon: <Icon.Circle size={12} />,
         permissions: ["admin", "editor"],
-        navLink: "/app/status/statusList",
+        navLink: "/app/packagemanager/userrecharge",
       },
       {
         id: "packageoffer",
@@ -104,7 +112,7 @@ const navigationConfig = [
         type: "item",
         icon: <Icon.Circle size={12} />,
         permissions: ["admin", "editor"],
-        navLink: "/app/status/daily",
+        navLink: "/app/packagemanager/packageoffer",
       },
 
     ],
@@ -116,7 +124,7 @@ const navigationConfig = [
     type: "item",
     icon: <Icon.Compass size={20} />,
     permissions: ["admin", "editor"],
-    navLink: "/app/report/rechargeReport",
+    navLink: "/app/packagemanager/commission",
   },
 
   {

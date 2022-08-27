@@ -21,11 +21,8 @@ import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import "../../../assets/scss/pages/users.scss";
 import { Route } from "react-router-dom";
 import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
-import SwitchEvent from "../../forms/form-elements/switch/SwitchEvent"
 
-// import axiosConfig from "../../../../axiosConfig";
-
-class UserList extends React.Component {
+class CallReject extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -50,22 +47,24 @@ class UserList extends React.Component {
       },
 
       {
-        headerName: "Full Name",
-        field: "fullname",
+        headerName: "Customer Name",
+        field: "customername",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
-              <span>{params.data.fullname}</span>
+              <span>
+                {params.data.firstname} {params.data.lastname}
+              </span>
             </div>
           );
         },
       },
 
       {
-        headerName: "Email",
-        field: "email	",
+        headerName: "Astrologer Name",
+        field: "astrologername",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
@@ -77,87 +76,63 @@ class UserList extends React.Component {
         },
       },
       {
-        headerName: "Mobile No.",
-        field: "mobile",
+        headerName: "Date",
+        field: "date",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
-            <div className="d-flex align-items-center cursor-pointer">
+            <div>
               <span>{params.data.mobile}</span>
             </div>
           );
         },
       },
       {
-        headerName: "DOB",
-        field: "dob	",
-        filter: true,
-        width: 200,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="d-flex align-items-center cursor-pointer">
-              <span>{params.data.email}</span>
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Date of Register",
-        field: "dateofregister",
+        headerName: "Reason",
+        field: "reason",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div>
-              <span>{params.data.createdAt}</span>
+              <span>{params.data.mobile}</span>
             </div>
           );
         },
       },
 
-      // {
-      //   headerName: "Status",
-      //   field: "dateofregister",
-      //   filter: true,
-      //   width: 200,
-      //   cellRendererFramework: (params) => {
-      //     return (
-      //       <div>
-      //         <span>{params.data.status}</span>
-      //       </div>
-      //     );
-      //   },
-      // },
-
       {
-        headerName: "Actions",
+        headerName: "Action",
         field: "sortorder",
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route render={({ history}) => (
-              <Eye
-                className="mr-50"
-                size="25px"
-                color="green"
-                onClick={() =>
-                history.push(`/app/userride/viewUserRide/${params.data._id}`       )
-              }
-            />
-          )}
-        />
-        <Route render={({ history}) => (
-              <Edit
-                className="mr-50"
-                size="25px"
-                color="blue"
-                onClick={() => history.push("/app/userride/editUserRide"  )
-              }
-            />
-          )}
-        />
+              <Route
+                render={({ history }) => (
+                  <Eye
+                    className="mr-50"
+                    size="25px"
+                    color="green"
+                    onClick={() =>
+                      history.push(
+                        `/app/userride/viewUserRide/${params.data._id}`
+                      )
+                    }
+                  />
+                )}
+              />
+              <Route
+                render={({ history }) => (
+                  <Edit
+                    className="mr-50"
+                    size="25px"
+                    color="blue"
+                    onClick={() => history.push("/app/userride/editUserRide")}
+                  />
+                )}
+              />
               <Trash2
                 className="mr-50"
                 size="25px"
@@ -168,7 +143,6 @@ class UserList extends React.Component {
                   this.gridApi.updateRowData({ remove: selectedData });
                 }}
               />
-
             </div>
           );
         },
@@ -176,28 +150,28 @@ class UserList extends React.Component {
     ],
   };
   async componentDidMount() {
-    // let { id } = this.props.match.params;
-
-    //  await axios.get(`http://15.207.86.15:8000/user/viewoneuser/${id}`)
-    //     .then((response) => {
-    //   let rowData = response.data.data;
-    //   console.log(rowData);
-    //   this.setState({ rowData });
-    //  });
-
+    let { id } = this.props.match.params;
 
     await axios
-    .get("http://15.207.86.15:8000/admin/alluser")
-    .then((response) => {
+      .get(`http://3.108.185.7:4000/user/view_onecust/${id}`)
+      .then((response) => {
         let rowData = response.data.data;
         console.log(rowData);
         this.setState({ rowData });
       });
-    }
+
+    await axios
+      .get("http://3.108.185.7:4000/admin/allcustomer")
+      .then((response) => {
+        let rowData = response.data.data;
+        console.log(rowData);
+        this.setState({ rowData });
+      });
+  }
 
   async runthisfunction(id) {
     console.log(id);
-    await axios.get(`http://15.207.86.15:8000/admin/dltuser/${id}`).then(
+    await axios.get(`http://3.108.185.7:4000/admin/delcustomer/${id}`).then(
       (response) => {
         console.log(response);
       },
@@ -234,36 +208,41 @@ class UserList extends React.Component {
     return (
       console.log(rowData),
       (
-      <div>
+
+        <div>
         <Breadcrumbs
-            breadCrumbTitle="Customer"
-            breadCrumbParent="Home"
-            breadCrumbActive=" Customer "
-          />
+          breadCrumbTitle="Call Reject"
+          breadCrumbParent="Call Management"
+          breadCrumbActive=" Call Reject "
+        />
 
         <Row className="app-user-list">
+
           <Col sm="12"></Col>
-            <Col sm="12">
-              <Card>
-                <Row className="m-2">
-                  <Col>
-                    <h1 sm="6" className="float-left">
-                      Customer List
-                    </h1>
-                  </Col>
-              <Col>
-              <Route render={({ history}) => (
-                    <Button
+          <Col sm="12">
+            <Card>
+              <Row className="m-2">
+                <Col>
+                  <h1 sm="6" className="float-left">
+                    Call  Reject
+                  </h1>
+                </Col>
+                <Col>
+                  <Route
+                    render={({ history }) => (
+                      <Button
                         className=" btn btn-success float-right"
-                        onClick={() => history.push("/app/user/addUser")}
-                        >
-                        Add User
-                        </Button>
-                )}
-              />
-              </Col>
-                </Row>
-                <CardBody>
+                        onClick={() =>
+                          history.push("/app/astrology/addAstrologer")
+                        }
+                      >
+                        Add
+                      </Button>
+                    )}
+                  />
+                </Col>
+              </Row>
+              <CardBody>
                 {this.state.rowData === null ? null : (
                   <div className="ag-theme-material w-100 my-2 ag-grid-table">
                     <div className="d-flex flex-wrap justify-content-between align-items-center">
@@ -326,7 +305,8 @@ class UserList extends React.Component {
                         <div className="export-btn">
                           <Button.Ripple
                             color="primary"
-                            onClick={() => this.gridApi.exportDataAsCsv()}>
+                            onClick={() => this.gridApi.exportDataAsCsv()}
+                          >
                             Export as CSV
                           </Button.Ripple>
                         </div>
@@ -357,9 +337,9 @@ class UserList extends React.Component {
             </Card>
           </Col>
         </Row>
-      </div>
+        </div>
       )
     );
   }
 }
-export default UserList;
+export default CallReject;

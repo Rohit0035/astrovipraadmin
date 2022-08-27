@@ -24,7 +24,7 @@ const NavbarUser = () => {
     async function getNotifications() {
       try {
         const data = await axios.get(
-          "http://15.206.122.110:4000/api/user/viewoneadmin/629b43e4b481821324ad3006"
+          "http://15.207.86.15:8000/admin/viewoneadmin/62ececcc2f10c788bef9a69a"
         );
         console.log(data.data.data);
         setProfilepic(data.data.data);

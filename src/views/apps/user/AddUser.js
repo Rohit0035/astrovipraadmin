@@ -8,11 +8,12 @@ import {
   Form,
   Label,
   Input,
- 
+
   Button,
 } from "reactstrap";
 import  axios from "axios";
 import { Route } from "react-router-dom";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
 
 export default class AddCustomer extends Component {
@@ -23,12 +24,12 @@ export default class AddCustomer extends Component {
         last_name: "",
         customer_email: "",
         mobile_no: "",
-        
+
         selectedFile: null,
         status: ""
     };
   }
-  
+
   onChangeHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] });
     this.setState({ selectedName: event.target.files[0].name });
@@ -46,7 +47,7 @@ export default class AddCustomer extends Component {
 
     axios.post("http://3.108.185.7:4000/api/user/customersignup", this.state)
       .then((response) => {
-        console.log(response);  
+        console.log(response);
         alert("Customer Added Successful")
         this.props.history.push("/app/customer/customerList");
       })
@@ -54,24 +55,29 @@ export default class AddCustomer extends Component {
         console.log(error);
       });
   };
-  
+
   render() {
     return (
       <div>
+         <Breadcrumbs
+            breadCrumbTitle="Customer"
+            breadCrumbParent="Home"
+            breadCrumbActive="Add Customer "
+          />
         <Card>
-         
+
           <Row className="m-2">
                 <Col>
                   <h1 sm="6" className="float-left">
                   Add User
                   </h1>
                 </Col>
-         
-         
+
+
             <Col>
         <Route render={({ history}) => (
               <Button
-                className=" btn btn-danger float-right"                
+                className=" btn btn-danger float-right"
                 onClick={() => history.push("/app/userride/userRideList")}
               >                 Back
                  </Button>
@@ -84,74 +90,97 @@ export default class AddCustomer extends Component {
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>first Name</Label>
-                  <Input   
-                    required 
-                    type="text" 
+                  <Input
+                    required
+                    type="text"
                     name="first_name"
-                    placeholder="Enter First Name" 
+                    placeholder="Enter First Name"
                     value={this.state.first_name}
                     onChange={this.changeHandler}>
                   </Input>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Last Name</Label>
-                  <Input   
-                    required 
-                    type="text" 
+                  <Input
+                    required
+                    type="text"
                     name="last_name"
-                    placeholder="Enter Last Name"  
+                    placeholder="Enter Last Name"
                     value={this.state.last_name}
                     onChange={this.changeHandler}>
-                  </Input> 
+                  </Input>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label> Email</Label>
-                  <Input  
-                    required 
-                    type="email" 
+                  <Input
+                    required
+                    type="email"
                     name="customer_email"
-                    placeholder="Email"  
+                    placeholder="Email"
                     value={this.state.customer_email}
                     onChange={this.changeHandler} >
-                  </Input>    
+                  </Input>
                 </Col>
-             
+
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Mobile No.</Label>
-                  <Input  
-                    required 
-                    type="number" 
+                  <Input
+                    required
+                    type="number"
                     name="mobile_no"
-                    placeholder="Mobile No." 
+                    placeholder="Mobile No."
                     value={this.state.mobile_no}
                     onChange={this.changeHandler}>
-                  </Input>    
+                  </Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>DOB</Label>
+                    <Input
+                      required
+                      type="date"
+                      name="sortorder"
+                      placeholder="Enter Confirm  Password"
+                      value={this.state.sortorder}
+                      onChange={this.changeHandler}>
+                    </Input>
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label>Date Of Register</Label>
+                    <Input
+                      required
+                      type="date"
+                      name="sortorder"
+                      placeholder="Enter Confirm  Password"
+                      value={this.state.sortorder}
+                      onChange={this.changeHandler}>
+                    </Input>
                 </Col>
               </Row>
               <Row>
               <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Password </Label>
-                    <Input   
-                      required 
-                      type="text" 
+                    <Input
+                      required
+                      type="text"
                       name="sortorder"
-                      placeholder="Enter Password"  
+                      placeholder="Enter Password"
                       value={this.state.sortorder}
                       onChange={this.changeHandler}>
-                    </Input> 
+                    </Input>
                 </Col>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label>Confirm Password </Label>
-                    <Input   
-                      required 
-                      type="text" 
+                    <Input
+                      required
+                      type="text"
                       name="sortorder"
-                      placeholder="Enter Confirm  Password"  
+                      placeholder="Enter Confirm  Password"
                       value={this.state.sortorder}
                       onChange={this.changeHandler}>
-                    </Input> 
+                    </Input>
                 </Col>
-            </Row> 
+
+            </Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Label className="mb-1">Status</Label>
                   <div
@@ -174,7 +203,7 @@ export default class AddCustomer extends Component {
                     />
                     <span style={{ marginRight: "3px" }}>Inactive</span>
                   </div>
-                </Col> 
+                </Col>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple

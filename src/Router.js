@@ -86,6 +86,27 @@ const TodayCallHistory = lazy(() =>
   import("./views/apps/dashboardlist/TodayCallHistory")
 );
 
+// call management
+const CallHistroy = lazy(() =>
+  import("./views/apps/callmanagement/CallHistory")
+);
+const CallReject = lazy(() =>
+  import("./views/apps/callmanagement/CallReject.js")
+);
+
+// Package management
+const AllPackage = lazy(() =>
+  import("./views/apps/packagemanager/Allpackage")
+);
+const PackageOffer = lazy(() =>
+  import("./views/apps/packagemanager/PackageOffer")
+);
+const UserRecharge = lazy(() =>
+  import("./views/apps/packagemanager/UserRecharge")
+);
+const Commission = lazy(() =>
+  import("./views/apps/packagemanager/Commission")
+);
 
 
 //Astrology//
@@ -386,6 +407,39 @@ class AppRouter extends React.Component {
               path="/app/astrology/viewAstrologer"
               component={ViewAstrologer}
             />
+
+             {/* Call Management */}
+            <AppRoute
+              path="/app/callmanagement/callhistory"
+              component={CallHistroy}
+            />
+
+           <AppRoute
+              path="/app/callmanagement/callgreject"
+              component={CallReject}
+            />
+
+            {/* Package Management */}
+
+            <AppRoute
+              path="/app/packagemanager/allPackage"
+              component={AllPackage}
+            />
+
+           <AppRoute
+              path="/app/packagemanager/userrecharge"
+              component={UserRecharge}
+            />
+
+            <AppRoute
+              path="/app/packagemanager/commission"
+              component={Commission}
+            />
+             <AppRoute
+              path="/app/packagemanager/packageoffer"
+              component={PackageOffer}
+            />
+
             {/* setting */}
             <AppRoute
               exact={true}
