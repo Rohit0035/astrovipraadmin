@@ -10,7 +10,7 @@ import {
   Button,
   // FormGroup,
   // CustomInput,
-  
+
 } from "reactstrap";
 import { Route } from "react-router-dom";
 import Select from "react-select"
@@ -37,10 +37,10 @@ export class AddNotification extends Component {
     axiosConfig
       .get("/dealer/alldealers")
       .then((response) => {
-        
+
         console.log(response);
         //this.setState({ dealerN: response.data.data });
-        
+
         // eslint-disable-next-line no-unused-expressions
         response.data?.data?.map((dealerp) => {
          let obj = {
@@ -118,7 +118,7 @@ export class AddNotification extends Component {
               <Col md="6" sm="12">
               <Label>Dealer List</Label>
               <Select
-               
+
                 isMulti
                 type="select"
                 name="dealer"
@@ -127,10 +127,10 @@ export class AddNotification extends Component {
                 options={dealerName}
                 value={dealer}
                 onChange={this.handleChange}
-               
-               /> 
+
+               />
             </Col>
-                
+
                 <Col lg="12" md="12" className="mb-2">
                   <Label>Descripiton</Label>
                   <Input

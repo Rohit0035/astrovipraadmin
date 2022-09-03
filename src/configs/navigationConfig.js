@@ -35,7 +35,9 @@ const navigationConfig = [
         icon: <Icon.User size={12} />,
         permissions: ["admin", "editor"],
         navLink: "/app/astrology/astrologerList",
-      }
+      },
+
+
 
       // {
       //   id: "driverRatings",
@@ -55,6 +57,85 @@ const navigationConfig = [
       //   navLink: "/app/driver/withdrawalRequests",
       // },
     ],
+  },
+
+  {
+    id: "productmanager",
+    title: "Product Management ",
+    type: "collapse",
+    icon: <Icon.Box size={20} />,
+    children: [
+      {
+        id: "productlist",
+        title: "Product List",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/productmanagement/productlist",
+      },
+      {
+        id: "orderproduct",
+        title: "Order Product",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/productmanagement/orderlist",
+      },
+      {
+        id: "deliverproduct",
+        title: "Deliver Product",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/productmanagement/deliverlist",
+      },
+      {
+        id: "canceledproduct",
+        title: "Cancel Order Product",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/productmanagement/ordercanel",
+      },
+
+
+
+      // {
+      //   id: "driverRatings",
+      //   title: "Driver Ratings",
+      //   type: "item",
+      //   icon: <Icon.Circle size={12} />,
+      //   permissions: ["admin", "editor"],
+      //   navLink: "/app/driver/driverRatings",
+      // },
+
+      // {
+      //   id: "withdrawalRequests",
+      //   title: "Withdrawal Requests",
+      //   type: "item",
+      //   icon: <Icon.Circle size={12} />,
+      //   permissions: ["admin", "editor"],
+      //   navLink: "/app/driver/withdrawalRequests",
+      // },
+    ],
+  },
+
+  {
+    id: "prediction",
+     title: "Prediction",
+     type: "item",
+     icon: <Icon.BarChart2 size={20} />,
+     permissions: ["admin", "editor"],
+     navLink: "/app/prediction/predictionlist",
+  },
+
+  {
+    id: "poojapackage",
+     title: "Pooja Package",
+     type: "item",
+     icon: <Icon.Package size={20} />,
+     permissions: ["admin", "editor"],
+     navLink: "/app/poojapackage/packagelist",
   },
 
 
@@ -177,7 +258,14 @@ const navigationConfig = [
     type: "collapse",
     icon: <Icon.Settings size={20} />,
     children: [
-
+      {
+        id: "bannerhome",
+        title: "Home Banner",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/app/homebanner/bannerlist",
+      },
       {
         id: "notificationList",
         title: "Notification",

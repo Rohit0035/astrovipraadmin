@@ -108,6 +108,65 @@ const Commission = lazy(() =>
   import("./views/apps/packagemanager/Commission")
 );
 
+// pooja package
+
+const PackageList = lazy(() =>
+  import("./views/apps/poojapackage/PackageList")
+);
+const AddPackage = lazy(() =>
+  import("./views/apps/poojapackage/AddPackage")
+);
+const EditPackage = lazy(() =>
+  import("./views/apps/poojapackage/EditPackage")
+);
+
+// prediction
+const PredictionList = lazy(() =>
+  import("./views/apps/prediction/PredictionList")
+);
+const AddPrediction = lazy(() =>
+  import("./views/apps/prediction/AddPrediction")
+);
+const EditPrediction = lazy(() =>
+  import("./views/apps/prediction/EditPrediction")
+);
+
+// product management
+
+const ProductList = lazy(() =>
+  import("./views/apps/productmanagement/ProductList")
+);
+const AddProduct = lazy(() =>
+  import("./views/apps/productmanagement/AddProduct")
+);
+const EditProduct = lazy(() =>
+  import("./views/apps/productmanagement/EditProduct")
+);
+const OrderList = lazy(() =>
+  import("./views/apps/productmanagement/OrderList")
+);
+
+const OrderCancel = lazy(() =>
+  import("./views/apps/productmanagement/OrderCancel")
+);
+
+const DeliverProduct = lazy(() =>
+  import("./views/apps/productmanagement/DeliverList")
+);
+
+// homebanner
+const BannerList = lazy(() =>
+  import("./views/apps/bannerhome/BannerList")
+);
+
+const AddBanner = lazy(() =>
+  import("./views/apps/bannerhome/AddBanner")
+);
+
+const EditBanner = lazy(() =>
+  import("./views/apps/bannerhome/EditBanner")
+);
+
 
 //Astrology//
 const AstrologerList = lazy(() =>
@@ -414,6 +473,42 @@ class AppRouter extends React.Component {
               component={CallHistroy}
             />
 
+            {/* Pooja package  */}
+
+           <AppRoute
+              path="/app/poojapackage/packagelist"
+              component={PackageList}
+            />
+            <AppRoute
+              path="/app/poojapackage/addpackage"
+              component={AddPackage}
+            />
+            <AppRoute
+              path="/app/poojapackage/editpackage"
+              component={EditPackage}
+            />
+
+            {/* prediction  */}
+
+            <AppRoute
+              path="/app/prediction/predictionlijst"
+              component={PredictionList}
+            />
+            <AppRoute
+              path="/app/prediction/predictionlist"
+              component={PredictionList}
+            />
+
+            <AppRoute
+              path="/app/prediction/addprediction"
+              component={AddPrediction}
+            />
+
+            <AppRoute
+              path="/app/prediction/editprediction"
+              component={EditPrediction}
+            />
+
            <AppRoute
               path="/app/callmanagement/callgreject"
               component={CallReject}
@@ -431,14 +526,60 @@ class AppRouter extends React.Component {
               component={UserRecharge}
             />
 
-            <AppRoute
+           <AppRoute
               path="/app/packagemanager/commission"
               component={Commission}
             />
-             <AppRoute
+
+           <AppRoute
               path="/app/packagemanager/packageoffer"
               component={PackageOffer}
             />
+
+            {/* productmanagement */}
+
+            <AppRoute
+              path="/app/productmanagement/productlist"
+              component={ProductList}
+            />
+            <AppRoute
+              path="/app/productmanagement/addproduct"
+              component={AddProduct}
+            />
+            <AppRoute
+              path="/app/productmanagement/editproduct"
+              component={EditProduct}
+            />
+            <AppRoute
+              path="/app/productmanagement/orderlist"
+              component={OrderList}
+            />
+             <AppRoute
+              path="/app/productmanagement/ordercanel"
+              component={OrderCancel}
+            />
+            <AppRoute
+              path="/app/productmanagement/deliverlist"
+              component={DeliverProduct}
+            />
+
+            {/*homebanner */}
+
+            <AppRoute
+              path="/app/homebanner/bannerlist"
+              component={BannerList}
+            />
+            <AppRoute
+              path="/app/homebanner/addbanner"
+              component={AddBanner}
+            />
+            <AppRoute
+              path="/app/homebanner/editbanner/:id"
+              component={EditBanner}
+            />
+
+
+            {/*homeb
 
             {/* setting */}
             <AppRoute
